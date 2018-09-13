@@ -12,12 +12,25 @@ h6 {
   font-family: 'Montserrat';
 }
 
+.biggerText {
+  font-size: 20px;
+}
+
 header .parallax {
   background-image: url("img/mountains.jpeg");
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+hr.white-line {
+  text-align: center;
+  max-width: 15rem;
+  border-top: solid 0.25rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  border-color: #fff;
 }
 
 hr.star-light,
