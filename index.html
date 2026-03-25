@@ -2,529 +2,2063 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1, shrink-to-fit=no"
-		/>
-		<meta name="description" content="" />
-		<meta name="author" content="" />
-
-		<title>Carlos Santana - Software Developer</title>
-
-		<!-- Bootstrap core CSS -->
-		<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-
-		<!-- Custom fonts for this template -->
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="Carlos Santana – Software Developer" />
+		<meta name="author" content="Carlos Santana" />
+		<title>Carlos Santana — Software Developer</title>
 		<link
-			href="vendor/font-awesome/css/font-awesome.min.css"
+			href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap"
 			rel="stylesheet"
-			type="text/css"
 		/>
-		<link
-			href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
-			rel="stylesheet"
-			type="text/css"
-		/>
-		<link
-			href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
-			rel="stylesheet"
-			type="text/css"
-		/>
+		<style>
+			/* ── Reset & Base ── */
+			*,
+			*::before,
+			*::after {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+			}
 
-		<!-- Plugin CSS -->
-		<link
-			href="vendor/magnific-popup/magnific-popup.css"
-			rel="stylesheet"
-			type="text/css"
-		/>
+			:root {
+				--bg: #0d0d0d;
+				--bg-panel: #111111;
+				--bg-card: #161616;
+				--border: #2a2a2a;
+				--green: #39d353;
+				--green-dim: #1f7a30;
+				--cyan: #56d4dd;
+				--yellow: #e3b341;
+				--red: #f85149;
+				--white: #e6edf3;
+				--muted: #8b949e;
+				--font: "JetBrains Mono", "Fira Code", "Cascadia Code", monospace;
+			}
 
-		<!-- Custom styles for this template -->
-		<link href="css/freelancer.css" rel="stylesheet" />
+			html {
+				scroll-behavior: smooth;
+			}
+
+			body {
+				background: var(--bg);
+				color: var(--white);
+				font-family: var(--font);
+				font-size: 14px;
+				line-height: 1.7;
+				overflow-x: hidden;
+			}
+
+			::selection {
+				background: var(--green-dim);
+				color: var(--white);
+			}
+			::-webkit-scrollbar {
+				width: 6px;
+			}
+			::-webkit-scrollbar-track {
+				background: var(--bg);
+			}
+			::-webkit-scrollbar-thumb {
+				background: var(--green-dim);
+				border-radius: 3px;
+			}
+
+			/* ── Scanlines overlay ── */
+			body::before {
+				content: "";
+				position: fixed;
+				inset: 0;
+				background: repeating-linear-gradient(
+					0deg,
+					transparent,
+					transparent 2px,
+					rgba(0, 0, 0, 0.03) 2px,
+					rgba(0, 0, 0, 0.03) 4px
+				);
+				pointer-events: none;
+				z-index: 9999;
+			}
+
+			/* ── Top bar ── */
+			.topbar {
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				height: 44px;
+				background: var(--bg-panel);
+				border-bottom: 1px solid var(--border);
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				padding: 0 24px;
+				z-index: 1000;
+				gap: 16px;
+			}
+
+			.topbar-left {
+				display: flex;
+				align-items: center;
+				gap: 8px;
+			}
+
+			.topbar-dots {
+				display: flex;
+				gap: 6px;
+			}
+			.dot {
+				width: 12px;
+				height: 12px;
+				border-radius: 50%;
+			}
+			.dot-red {
+				background: #ff5f57;
+			}
+			.dot-yellow {
+				background: #febc2e;
+			}
+			.dot-green {
+				background: #28c840;
+			}
+
+			.topbar-title {
+				color: var(--muted);
+				font-size: 12px;
+				letter-spacing: 0.05em;
+				margin-left: 12px;
+			}
+
+			.topbar-nav {
+				display: flex;
+				gap: 4px;
+				list-style: none;
+			}
+
+			.topbar-nav a {
+				color: var(--muted);
+				text-decoration: none;
+				font-size: 12px;
+				padding: 4px 10px;
+				border-radius: 4px;
+				transition:
+					color 0.2s,
+					background 0.2s;
+				letter-spacing: 0.04em;
+			}
+			.topbar-nav a:hover {
+				color: var(--green);
+				background: rgba(57, 211, 83, 0.08);
+			}
+
+			.topbar-right {
+				display: flex;
+				gap: 10px;
+				align-items: center;
+			}
+
+			.topbar-right a {
+				color: var(--muted);
+				text-decoration: none;
+				transition: color 0.2s;
+				font-size: 18px;
+				line-height: 1;
+			}
+			.topbar-right a:hover {
+				color: var(--green);
+			}
+
+			.topbar-right svg {
+				width: 18px;
+				height: 18px;
+				fill: currentColor;
+				vertical-align: middle;
+			}
+
+			/* ── Main layout ── */
+			.page {
+				padding-top: 44px;
+			}
+
+			/* ── Hero / Terminal boot ── */
+			.hero {
+				min-height: calc(100vh - 44px);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding: 48px 24px;
+			}
+
+			.terminal-window {
+				width: 100%;
+				max-width: 760px;
+				background: var(--bg-panel);
+				border: 1px solid var(--border);
+				border-radius: 10px;
+				overflow: hidden;
+				box-shadow:
+					0 24px 80px rgba(0, 0, 0, 0.8),
+					0 0 0 1px rgba(255, 255, 255, 0.04);
+			}
+
+			.terminal-header {
+				background: #1c1c1c;
+				padding: 12px 16px;
+				display: flex;
+				align-items: center;
+				gap: 12px;
+				border-bottom: 1px solid var(--border);
+			}
+
+			.terminal-header .dot {
+				cursor: default;
+			}
+
+			.terminal-tab {
+				color: var(--muted);
+				font-size: 11px;
+				background: var(--bg-panel);
+				padding: 2px 12px;
+				border-radius: 4px 4px 0 0;
+				letter-spacing: 0.04em;
+			}
+
+			.terminal-body {
+				padding: 28px 32px 36px;
+				min-height: 360px;
+			}
+
+			/* ── Terminal lines ── */
+			.t-prompt {
+				display: flex;
+				align-items: flex-start;
+				gap: 0;
+				flex-wrap: wrap;
+			}
+			.t-prompt .ps1-user {
+				color: var(--green);
+			}
+			.t-prompt .ps1-at {
+				color: var(--muted);
+			}
+			.t-prompt .ps1-host {
+				color: var(--cyan);
+			}
+			.t-prompt .ps1-path {
+				color: var(--muted);
+			}
+			.t-prompt .ps1-sym {
+				color: var(--green);
+				margin-right: 8px;
+			}
+			.t-prompt .ps1-cmd {
+				color: var(--white);
+			}
+
+			.t-output {
+				margin: 6px 0 18px 0;
+				padding-left: 0;
+			}
+
+			.t-line {
+				display: block;
+				opacity: 0;
+				transform: translateY(4px);
+				transition:
+					opacity 0.25s,
+					transform 0.25s;
+			}
+			.t-line.visible {
+				opacity: 1;
+				transform: translateY(0);
+			}
+
+			/* greeting */
+			.t-name {
+				font-size: clamp(22px, 4vw, 32px);
+				font-weight: 700;
+				color: var(--green);
+				letter-spacing: 0.02em;
+			}
+			.t-role {
+				color: var(--cyan);
+				font-size: 15px;
+			}
+			.t-tagline {
+				color: var(--muted);
+				font-size: 13px;
+				font-style: italic;
+			}
+			.t-gap {
+				margin-bottom: 8px;
+			}
+
+			/* key-value pairs */
+			.kv {
+				display: flex;
+				gap: 12px;
+				flex-wrap: wrap;
+			}
+			.kv-key {
+				color: var(--yellow);
+				min-width: 90px;
+			}
+			.kv-sep {
+				color: var(--muted);
+			}
+			.kv-val {
+				color: var(--white);
+			}
+			.kv-val a {
+				color: var(--cyan);
+				text-decoration: none;
+			}
+			.kv-val a:hover {
+				text-decoration: underline;
+			}
+
+			/* blinking cursor */
+			.cursor {
+				display: inline-block;
+				width: 8px;
+				height: 15px;
+				background: var(--green);
+				vertical-align: middle;
+				margin-left: 2px;
+				animation: blink 1.1s step-end infinite;
+				border-radius: 1px;
+			}
+			@keyframes blink {
+				0%,
+				100% {
+					opacity: 1;
+				}
+				50% {
+					opacity: 0;
+				}
+			}
+
+			.hero-actions {
+				margin-top: 28px;
+				display: flex;
+				gap: 12px;
+				flex-wrap: wrap;
+			}
+
+			/* ── Buttons ── */
+			.btn-term {
+				display: inline-flex;
+				align-items: center;
+				gap: 8px;
+				padding: 9px 20px;
+				border-radius: 6px;
+				font-family: var(--font);
+				font-size: 13px;
+				font-weight: 500;
+				cursor: pointer;
+				text-decoration: none;
+				transition: all 0.2s;
+				letter-spacing: 0.03em;
+				border: 1px solid transparent;
+			}
+			.btn-term-primary {
+				background: var(--green);
+				color: #0d0d0d;
+				border-color: var(--green);
+			}
+			.btn-term-primary:hover {
+				background: #4ee86a;
+				box-shadow: 0 0 18px rgba(57, 211, 83, 0.35);
+				color: #0d0d0d;
+			}
+			.btn-term-outline {
+				background: transparent;
+				color: var(--green);
+				border-color: var(--green-dim);
+			}
+			.btn-term-outline:hover {
+				border-color: var(--green);
+				background: rgba(57, 211, 83, 0.07);
+				box-shadow: 0 0 12px rgba(57, 211, 83, 0.15);
+			}
+
+			/* ── Section shell ── */
+			.section {
+				padding: 72px 24px;
+				max-width: 900px;
+				margin: 0 auto;
+			}
+
+			.section-header {
+				margin-bottom: 40px;
+			}
+
+			.section-prompt {
+				display: flex;
+				align-items: center;
+				gap: 8px;
+				margin-bottom: 6px;
+			}
+			.section-prompt .ps1-sym {
+				color: var(--green);
+				font-size: 16px;
+			}
+			.section-title {
+				color: var(--white);
+				font-size: 18px;
+				font-weight: 500;
+				letter-spacing: 0.04em;
+			}
+
+			.section-divider {
+				height: 1px;
+				background: linear-gradient(90deg, var(--green-dim), transparent);
+				margin-bottom: 32px;
+			}
+
+			/* ── Comment-style heading ── */
+			.comment {
+				color: var(--muted);
+				font-size: 12px;
+				font-style: italic;
+				margin-bottom: 20px;
+			}
+			.comment::before {
+				content: "// ";
+				color: var(--green-dim);
+			}
+
+			/* ── Cards ── */
+			.card {
+				background: var(--bg-card);
+				border: 1px solid var(--border);
+				border-radius: 8px;
+				padding: 24px 28px;
+				margin-bottom: 20px;
+				transition:
+					border-color 0.2s,
+					box-shadow 0.2s;
+				position: relative;
+			}
+			.card:hover {
+				border-color: var(--green-dim);
+				box-shadow: 0 0 24px rgba(57, 211, 83, 0.06);
+			}
+
+			.card-accent {
+				position: absolute;
+				left: 0;
+				top: 16px;
+				bottom: 16px;
+				width: 3px;
+				background: var(--green);
+				border-radius: 0 2px 2px 0;
+			}
+
+			.card-header-row {
+				display: flex;
+				justify-content: space-between;
+				align-items: flex-start;
+				gap: 16px;
+				flex-wrap: wrap;
+				margin-bottom: 6px;
+			}
+
+			.card-company {
+				color: var(--green);
+				font-weight: 700;
+				font-size: 16px;
+				letter-spacing: 0.02em;
+			}
+			.card-badge {
+				font-size: 11px;
+				padding: 2px 10px;
+				border-radius: 999px;
+				font-weight: 500;
+				letter-spacing: 0.06em;
+				white-space: nowrap;
+			}
+			.badge-active {
+				background: rgba(57, 211, 83, 0.12);
+				color: var(--green);
+				border: 1px solid var(--green-dim);
+			}
+			.badge-past {
+				background: rgba(139, 148, 158, 0.1);
+				color: var(--muted);
+				border: 1px solid var(--border);
+			}
+
+			.card-role {
+				color: var(--cyan);
+				font-size: 13px;
+				margin-bottom: 4px;
+			}
+			.card-period {
+				color: var(--muted);
+				font-size: 11px;
+				margin-bottom: 14px;
+			}
+			.card-desc {
+				color: #adb8c5;
+				font-size: 13px;
+				margin-bottom: 12px;
+			}
+
+			/* collapsible detail */
+			.card-details {
+				overflow: hidden;
+				max-height: 0;
+				transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+			}
+			.card-details.open {
+				max-height: 1200px;
+			}
+
+			.card-toggle {
+				background: none;
+				border: none;
+				color: var(--muted);
+				font-family: var(--font);
+				font-size: 12px;
+				cursor: pointer;
+				padding: 0;
+				display: flex;
+				align-items: center;
+				gap: 6px;
+				transition: color 0.2s;
+			}
+			.card-toggle:hover {
+				color: var(--green);
+			}
+			.card-toggle .arrow {
+				display: inline-block;
+				transition: transform 0.3s;
+			}
+			.card-toggle.open .arrow {
+				transform: rotate(90deg);
+			}
+
+			/* bullet list inside card */
+			.term-list {
+				list-style: none;
+				padding: 0;
+				margin: 12px 0 0;
+			}
+			.term-list li {
+				color: #adb8c5;
+				font-size: 13px;
+				padding: 3px 0 3px 20px;
+				position: relative;
+			}
+			.term-list li::before {
+				content: "▸";
+				position: absolute;
+				left: 0;
+				color: var(--green-dim);
+			}
+
+			/* tech tags */
+			.tags {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 6px;
+				margin-top: 14px;
+			}
+			.tag {
+				background: rgba(86, 212, 221, 0.08);
+				color: var(--cyan);
+				border: 1px solid rgba(86, 212, 221, 0.2);
+				font-size: 11px;
+				padding: 2px 10px;
+				border-radius: 4px;
+				letter-spacing: 0.04em;
+			}
+
+			/* ── About prose ── */
+			.about-output {
+				font-size: 14px;
+				line-height: 1.8;
+				color: #adb8c5;
+			}
+			.about-output p {
+				margin-bottom: 14px;
+			}
+			.about-output a {
+				color: var(--cyan);
+				text-decoration: none;
+			}
+			.about-output a:hover {
+				text-decoration: underline;
+			}
+			.about-output strong {
+				color: var(--white);
+				font-weight: 500;
+			}
+
+			/* ── Education ── */
+			.edu-card {
+				background: var(--bg-card);
+				border: 1px solid var(--border);
+				border-radius: 8px;
+				padding: 24px 28px;
+				position: relative;
+			}
+			.edu-card .card-accent {
+				background: var(--cyan);
+			}
+			.edu-degree {
+				color: var(--white);
+				font-weight: 700;
+				font-size: 16px;
+				margin-bottom: 4px;
+			}
+			.edu-school {
+				color: var(--cyan);
+				font-size: 13px;
+				margin-bottom: 4px;
+			}
+			.edu-period {
+				color: var(--muted);
+				font-size: 11px;
+				margin-bottom: 16px;
+			}
+
+			/* ── Skills grid ── */
+			.skills-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+				gap: 16px;
+				margin-top: 8px;
+			}
+			.skill-group {
+				background: var(--bg-card);
+				border: 1px solid var(--border);
+				border-radius: 8px;
+				padding: 18px 20px;
+				transition: border-color 0.2s;
+			}
+			.skill-group:hover {
+				border-color: var(--green-dim);
+			}
+			.skill-group-label {
+				color: var(--yellow);
+				font-size: 11px;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+				margin-bottom: 12px;
+			}
+			.skill-item {
+				color: #adb8c5;
+				font-size: 12px;
+				padding: 2px 0;
+			}
+			.skill-item::before {
+				content: "· ";
+				color: var(--green-dim);
+			}
+
+			/* ── Contact ── */
+			.contact-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+				gap: 14px;
+			}
+			.contact-item {
+				display: flex;
+				align-items: center;
+				gap: 12px;
+				background: var(--bg-card);
+				border: 1px solid var(--border);
+				border-radius: 8px;
+				padding: 16px 20px;
+				text-decoration: none;
+				transition: all 0.2s;
+			}
+			.contact-item:hover {
+				border-color: var(--green-dim);
+				background: rgba(57, 211, 83, 0.04);
+				transform: translateY(-2px);
+				box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+			}
+			.contact-icon {
+				color: var(--green);
+				font-size: 20px;
+				line-height: 1;
+				flex-shrink: 0;
+				width: 24px;
+				text-align: center;
+			}
+			.contact-icon svg {
+				width: 20px;
+				height: 20px;
+				fill: currentColor;
+			}
+			.contact-label {
+				color: var(--muted);
+				font-size: 10px;
+				letter-spacing: 0.06em;
+				text-transform: uppercase;
+				display: block;
+			}
+			.contact-value {
+				color: var(--white);
+				font-size: 13px;
+			}
+
+			/* ── Footer ── */
+			.footer {
+				border-top: 1px solid var(--border);
+				padding: 28px 24px;
+				text-align: center;
+				color: var(--muted);
+				font-size: 11px;
+				letter-spacing: 0.04em;
+			}
+			.footer .green {
+				color: var(--green-dim);
+			}
+
+			/* ── Typing animation ── */
+			.typed-text {
+			}
+			.typed-cursor-inline {
+				display: inline-block;
+				width: 7px;
+				height: 13px;
+				background: var(--green);
+				vertical-align: middle;
+				margin-left: 1px;
+				animation: blink 1.1s step-end infinite;
+				border-radius: 1px;
+			}
+
+			/* ── Responsive ── */
+			@media (max-width: 600px) {
+				.topbar-nav {
+					display: none;
+				}
+				.terminal-body {
+					padding: 20px 18px 28px;
+				}
+				.section {
+					padding: 48px 16px;
+				}
+				.card {
+					padding: 18px 18px;
+				}
+				.hero-actions {
+					flex-direction: column;
+				}
+				.btn-term {
+					justify-content: center;
+				}
+			}
+
+			/* ── Scroll reveal ── */
+			.reveal {
+				opacity: 0;
+				transform: translateY(20px);
+				transition:
+					opacity 0.5s ease,
+					transform 0.5s ease;
+			}
+			.reveal.visible {
+				opacity: 1;
+				transform: translateY(0);
+			}
+
+			/* pip install progress style easter egg line */
+			.pip-line {
+				color: var(--muted);
+				font-size: 11px;
+				padding: 2px 0;
+			}
+			.pip-ok {
+				color: var(--green);
+			}
+			.pip-warn {
+				color: var(--yellow);
+			}
+			/* ── Sticky mini-terminal ── */
+			.sticky-term {
+				position: fixed;
+				top: 44px;
+				left: 50%;
+				transform: translateX(-50%) translateY(-110%);
+				width: calc(100% - 48px);
+				max-width: 760px;
+				z-index: 998;
+				background: var(--bg-panel);
+				border: 1px solid var(--border);
+				border-top: none;
+				border-radius: 0 0 10px 10px;
+				box-shadow: 0 16px 48px rgba(0, 0, 0, 0.75);
+				transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+				pointer-events: none;
+			}
+			.sticky-term.visible {
+				transform: translateX(-50%) translateY(0);
+			}
+			.sticky-term-body {
+				padding: 10px 24px 12px;
+			}
+		</style>
 	</head>
 
-	<body id="page-top">
-		<!-- Navigation -->
-		<nav
-			class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase"
-			id="mainNav"
-		>
-			<div class="container">
-				<a class="navbar-brand js-scroll-trigger" href="#page-top"
-					>Carlos Santana</a
+	<body>
+		<!-- ── Top Bar ── -->
+		<nav class="topbar" aria-label="Main navigation">
+			<div class="topbar-left">
+				<span class="topbar-title">carlos@portfolio: ~</span>
+			</div>
+			<ul class="topbar-nav" role="list">
+				<li><a href="#about">about</a></li>
+				<li><a href="#experience">experience</a></li>
+				<li><a href="#education">education</a></li>
+				<li><a href="#skills">skills</a></li>
+				<li><a href="#contact">contact</a></li>
+			</ul>
+			<div class="topbar-right">
+				<a
+					href="https://github.com/carlossantana3279"
+					target="_blank"
+					rel="noopener"
+					aria-label="GitHub"
 				>
-				<button
-					class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded"
-					type="button"
-					data-toggle="collapse"
-					data-target="#navbarResponsive"
-					aria-controls="navbarResponsive"
-					aria-expanded="false"
-					aria-label="Toggle navigation"
+					<svg viewBox="0 0 24 24" aria-hidden="true">
+						<path
+							d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+						/>
+					</svg>
+				</a>
+				<!-- For now don't show the cs software webiste here -->
+				<!-- <a
+					href="https://cs-software-org.github.io/"
+					target="_blank"
+					rel="noopener"
+					aria-label="CS Software"
 				>
-					Menu
-					<i class="fa fa-bars"></i>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarResponsive">
-					<ul class="navbar-nav ml-auto">
-						<li class="nav-item mx-0 mx-lg-1">
-							<a
-								class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-								href="#about"
-								>About</a
-							>
-						</li>
-						<li class="nav-item mx-0 mx-lg-1">
-							<a
-								class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-								href="#portfolio"
-								>Work Experience</a
-							>
-						</li>
-						<li class="nav-item mx-0 mx-lg-1">
-							<a
-								class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-								href="#education"
-								>Education</a
-							>
-						</li>
-						<li class="nav-item mx-0 mx-lg-1">
-							<a
-								class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-								href="#contact"
-								>Contact</a
-							>
-						</li>
-						<li class="list-inline-item">
-							<a
-								class="btn btn-outline-light btn-social text-center rounded-circle"
-								href="https://www.linkedin.com/in/carlos3279/"
-							>
-								<i class="fa fa-fw fa-linkedin"></i>
-							</a>
-							<a
-								class="btn btn-outline-light btn-social text-center rounded-circle"
-								href="https://github.com/carlossantana3279"
-							>
-								<i class="fa fa-fw fa-github"></i>
-							</a>
-						</li>
-					</ul>
-				</div>
+					<svg viewBox="0 0 24 24" aria-hidden="true">
+						<path
+							d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm-1 17.93V18a1 1 0 0 0-1-1H8a3 3 0 0 1-3-3v-1l5 5v.93zM17.9 15.39A3 3 0 0 0 15 13h-1v-3a1 1 0 0 0-1-1H9V7h2a1 1 0 0 0 1-1V4.07A8.003 8.003 0 0 1 20 12a7.95 7.95 0 0 1-2.1 3.39z"
+						/>
+					</svg>
+				</a> -->
+				<a
+					href="https://www.linkedin.com/in/carlos3279/"
+					target="_blank"
+					rel="noopener"
+					aria-label="LinkedIn"
+				>
+					<svg viewBox="0 0 24 24" aria-hidden="true">
+						<path
+							d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+						/>
+					</svg>
+				</a>
 			</div>
 		</nav>
 
-		<!-- Header -->
-		<header
-			class="parallax masthead text-white text-center"
-			style="
-				background:
-					linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-					url(&quot;img/sunshine-banff.JPG&quot;);
-				background-attachment: fixed;
-				background-position: center;
-				background-repeat: no-repeat;
-				background-size: cover;
-			"
-		>
-			<div class="container">
-				<img
-					class="img-fluid mb-5 d-block mx-auto"
-					src="img/carlos_square2-min.jpg"
-					alt=""
-					style="border-radius: 50%; width: 300px; height: 300px"
-				/>
-				<h1 class="text-uppercase mb-0">Hi, I'm Carlos</h1>
-				<hr class="white-line" />
-				<h2 class="mb-0">Software Developer</h2>
-				<h2 style="font-weight: 300; font-size: 18px">
-					<i
-						>Passionate about creating software that improves the lives of its
-						users</i
-					>
-				</h2>
+		<!-- ── Sticky mini-terminal (shown when hero scrolls out of view) ── -->
+		<div class="sticky-term" id="stickyTerm" aria-hidden="true">
+			<div class="sticky-term-body">
+				<span class="t-prompt">
+					<span class="ps1-user">carlos</span><span class="ps1-at">@</span
+					><span class="ps1-host">portfolio</span
+					><span class="ps1-path">:~</span><span class="ps1-sym">$ </span
+					><span id="sticky-typed" style="color: var(--white)"></span
+					><span class="cursor" aria-hidden="true"></span>
+				</span>
 			</div>
-		</header>
+		</div>
 
-		<!-- About Section -->
-		<section class="text-secondary mb-0" id="about">
-			<div class="container">
-				<h2 class="text-center text-uppercase =">About Me</h2>
-				<hr class="star-dark mb-5" />
-				<div class="row">
-					<div class="col-lg-12 ml-auto">
-						<p class="lead text-secondary">
-							Hello! I'm Carlos, a software developer based in Oakville,
-							Ontario.
-						</p>
-						<p class="lead text-secondary">
-							I am passionate about creating and designing software. Whether
-							it's a tool used for automation, a web app, or a simple script. My
-							goal is it to build reliable products that in some way improve the
-							lives of the people that use them.
-						</p>
-						<p class="lead text-secondary">
-							Shortly after graduating from McMaster University, I joined the
-							development team at
-							<a href="https://www.demandhub.co/">DemandHub</a> where I work as
-							a full stack engineer. I get to work on many interesting projects
-							that help businesses grow by attracting, engaging, and retaining
-							more customers.
-						</p>
-						<p class="lead text-secondary">
-							During my studies, I also had the opportunity of working at Bell
-							Canada for 16 months as a software developer (co-op). I was
-							responsible for designing, developing, and maintaining in-house
-							tools used by the Core Network Team. Much of my work focused on
-							creating applications that centered around helping the Core
-							Network Team improve data driven decision making by visualizing
-							data and automation of the Network. I also thrived in my role as
-							the Scrum Master (in addition to development work) and facilitated
-							bi-weekly workshops for 6 months for the 5 person development team
-							that I was a part of. After my studies at McMaster University, I
-							was asked to return to the same team but decided to pursue other
-							opportunities.
-						</p>
-						<p class="lead text-secondary">
-							As an entrepreneur, I started a software company that creates
-							websites for small businesses and creates mobile applications in
-							2016. I've created and consulted on several websites for small
-							businesses. An app that I developed,
-							<a
-								href="https://play.google.com/store/apps/details?id=com.gmail.cssoftware3279.Touch_Roulette"
-								>Touch Roulette – Decision Maker</a
-							>, has over 1 Million downloads on the Google Play Store. This
-							cross platform app helps groups make decisions quickly in a fun
-							way.
-						</p>
+		<div class="page">
+			<!-- ── Hero ── -->
+			<section class="hero" id="top">
+				<div class="terminal-window" role="main">
+					<div class="terminal-header" aria-hidden="true">
+						<div class="topbar-dots">
+							<span class="dot dot-red"></span>
+							<span class="dot dot-yellow"></span>
+							<span class="dot dot-green"></span>
+						</div>
+						<span class="terminal-tab">bash — 80×24</span>
 					</div>
-					<!-- <div class="col-lg-12 mr-auto">
-            <p class="lead text-secondary">At Bell I was responsible for designing, developing, and maintaining in-house tools used by the Core Network Team. Much of my work focused on creating applications that centered around helping the Core Network Team improve data driven decision making by visualizing data and automation of the Network. I have extensive experience using .Net Core since it was the main framework used to create new web applications. I also thrived in my role as the Scrum Master and facilitated bi-weekly workshops for 6 months for a team of 5 members. Some of my hobbies include photography, developing  mobile apps, actively contributing to Google Maps(being a Local Guide), playing team sports, and traveling. To learn more about me, keep reading! </p>
-          </div> -->
+					<div class="terminal-body" id="terminalBody" aria-live="polite">
+						<!-- Lines injected by JS boot sequence -->
+					</div>
 				</div>
-				<div class="text-center mt-4">
+			</section>
+
+			<!-- ── About ── -->
+			<section class="section reveal" id="about">
+				<div class="section-header">
+					<div class="section-prompt">
+						<span class="ps1-sym">$</span>
+						<span class="section-title">cat about.txt</span>
+					</div>
+					<div class="section-divider"></div>
+					<p class="comment">software developer · london, on</p>
+				</div>
+				<div class="about-output">
+					<p>
+						Hello! I'm <strong>Carlos</strong>, a full-stack software developer
+						based in London, Ontario. I'm passionate about building reliable,
+						well-crafted software that genuinely improves the lives of the
+						people who use it — whether that's a polished web app, a handy
+						automation script, or a mobile experience enjoyed by millions.
+					</p>
+					<p>
+						Shortly after graduating from McMaster University I joined
+						<a href="https://www.demandhub.co/" target="_blank" rel="noopener"
+							>DemandHub</a
+						>
+						as a full-stack engineer, where I work on messaging tools that help
+						small and medium-sized businesses attract, engage, and retain
+						customers.
+					</p>
+					<p>
+						During my studies I spent 16 months at
+						<strong>Bell Canada</strong> as a co-op software developer, building
+						in-house analytics and automation tools for the Core Network Team. I
+						also stepped into the Scrum Master role for 6 months, facilitating
+						bi-weekly workshops for a 5-person team.
+					</p>
+					<p>
+						As an entrepreneur I founded
+						<a
+							href="https://cs-software-org.github.io/"
+							target="_blank"
+							rel="noopener"
+							><strong>CS Software</strong></a
+						>
+						— a web design and app development venture. My app
+						<a
+							href="https://play.google.com/store/apps/details?id=com.gmail.cssoftware3279.Touch_Roulette"
+							target="_blank"
+							rel="noopener"
+							>Touch Roulette – Decision Maker</a
+						>
+						has surpassed <strong>1 million downloads</strong> on the Google
+						Play Store.
+					</p>
+				</div>
+				<div style="margin-top: 28px">
 					<a
-						class="btn btn-xl btn-outline-dark"
+						class="btn-term btn-term-primary"
 						href="Resume.pdf"
 						target="_blank"
+						rel="noopener"
 					>
-						<i class="fa fa-download mr-2"></i>
-						Download Resume Now!
+						<svg
+							width="14"
+							height="14"
+							viewBox="0 0 24 24"
+							fill="currentColor"
+							aria-hidden="true"
+						>
+							<path d="M12 16l-6-6h4V4h4v6h4l-6 6zm-7 4h14v-2H5v2z" />
+						</svg>
+						Download Resume
 					</a>
 				</div>
-			</div>
-		</section>
+			</section>
 
-		<!-- Portfolio Grid Section -->
-		<section class="bg-primary portfolio" id="portfolio">
-			<div class="container">
-				<h2 class="text-center text-uppercase mb-0 text-white">
-					Work Experience
-				</h2>
-				<hr class="star-light mb-5" />
-				<div>
-					<h3 class="text-white">DemandHub</h3>
-					<h5 class="text-white">
-						Full Stack Engineer | Mississauga, ON | May 2019- Present
-					</h5>
-					<p class="text-white biggerText">
-						DemandHub is a startup that builds messaging tools to help small and
-						medium sized businesses grow by attracting, engaging, and retaining
-						more customers.
-					</p>
-					<p class="text-white biggerText">What I Do:</p>
-					<ul class="text-white biggerText">
-						<li>
-							Plan, design, and implement web-application using HTML, CSS, React
-							Js
-						</li>
-						<li>
-							Plan, design, and implement core components of back-end REST API
-						</li>
-						<li>
-							Built SQL queries and aided in the automation of manual processes
-						</li>
-						<li>
-							Work closely with team members in other functions, including
-							sales, support, and marketing
-						</li>
-						<li>
-							Support the team with continuous improvement (tools, processes,
-							and best practices)
-						</li>
-						<li>Understand and follow agile development methodologies</li>
-						<li>
-							Create scripts to automate manual processes, support core
-							applications, and for reporting
-						</li>
-						<li>Participate in rigorous code reviews</li>
-					</ul>
-					<h5 class="text-white">Main Languages & Frameworks used:</h5>
-					<p class="text-white biggerText">
-						Javascript, React Js, Node Js, HTML, CSS, MySQL, jQuery, Bootstrap 3
-					</p>
-					<h5 class="text-white">Other Tools:</h5>
-					<p class="text-white biggerText">
-						VS Code, GitHub, Git, Postman, Chrome Developer Tools, Jira
-					</p>
-					<hr class="white-line" />
-				</div>
-				<div>
-					<h3 class="text-white">Bell Canada</h3>
-					<h5 class="text-white">
-						Software Developer (Co-op) | Mississauga, ON | May 2017- August 2018
-					</h5>
-					<p class="text-white biggerText">
-						Worked in a small 5 person DevOps team creating in-house tools for
-						automation and analytics to be used by the Core Network Team.
-					</p>
-					<p class="text-white biggerText">What I Did:</p>
-					<ul class="text-white biggerText">
-						<li>
-							Designed, developed, and maintained in-house tools used by the
-							Core Network Team in an agile environment
-						</li>
-						<li>Worked in a small 5 person DevOps team utilizing scrum</li>
-						<li>
-							Built SQL queries and aided in the automation of manual processes
-						</li>
-						<li>Designed and modified SQL databases to be used by our tools</li>
-						<li>
-							Executed the Scrum Master Role for 6 months and successfully
-							designed and facilitated meetings, supervised the scrum process
-							within the team and ensured that proper processes were followed
-						</li>
-						<li>Coordinated and delivered bi-weekly workshops for 6 months</li>
-						<li>
-							Developed sprint based Calendar and Log Viewer Web Apps as
-							self-directed projects in an agile manner
-						</li>
-					</ul>
-					<h5 class="text-white">Main Languages & Frameworks used:</h5>
-					<p class="text-white biggerText">
-						.Net Core, C#, Html, Css, Javascript, jQuery, Bootstrap, SQL, Entity
-						Framework
-					</p>
-					<h5 class="text-white">Other Tools:</h5>
-					<p class="text-white biggerText">
-						Visual Studio, TFS (Git), SQL Server Management Studio, Resharper
-						Ultimate (VS plugin), Chrome Developer Tools, Sublime
-					</p>
-					<hr class="white-line" />
-				</div>
-				<div>
-					<h3 class="text-white">CS Software</h3>
-					<h5 class="text-white">
-						Founder & Designer | Hamilton, ON | June 2016 - Present
-					</h5>
-					<p class="text-white biggerText">
-						CS Software designs websites, provides consulting services, and
-						creates software applications.
-					</p>
-					<p class="text-white biggerText">What I Did:</p>
-					<ul class="text-white biggerText">
-						<li>
-							Founded a web design and software development business. Raised
-							$3000 in start-up funds from Ontario’s flagship entrepreneurship
-							program.
-						</li>
-						<li>
-							Developed
-							<a
-								class="text-white"
-								style="font-weight: 600"
-								href="https://play.google.com/store/apps/details?id=com.gmail.cssoftware3279.Touch_Roulette"
-								>Touch Roulette – Decision Maker</a
-							>
-							App. A cross platform app to help make a group of friends make
-							decisions quickly in a fun way with over 1 million downloads.
-							Developed using Corona SDK and Lua.
-						</li>
-					</ul>
-					<hr class="white-line" />
-				</div>
-				<div>
-					<div class="text-center" style="padding: 30px 0 30px 0">
-						<a
-							class="btn btn-light"
-							data-toggle="collapse"
-							data-target="#additionalWork"
-						>
-							Additional Work
-						</a>
+			<!-- ── Work Experience ── -->
+			<section class="section reveal" id="experience">
+				<div class="section-header">
+					<div class="section-prompt">
+						<span class="ps1-sym">$</span>
+						<span class="section-title">ls -la experience/</span>
 					</div>
-					<div id="additionalWork" class="collapse">
-						<div>
-							<h3 class="text-white">Terra Greenhouses</h3>
-							<h5 class="text-white">
-								Shipping & Receiving | Hamilton, ON | Summers of 2015 & 2016
-							</h5>
-							<ul class="text-white biggerText">
+					<div class="section-divider"></div>
+					<p class="comment">click any card to expand details</p>
+				</div>
+
+				<!-- DemandHub -->
+				<div class="card reveal">
+					<div class="card-accent"></div>
+					<div class="card-header-row">
+						<a
+							class="card-company"
+							href="https://www.demandhub.co/"
+							target="_blank"
+							rel="noopener"
+							>DemandHub</a
+						>
+						<span class="card-badge badge-active">CURRENT</span>
+					</div>
+					<div class="card-role">Full Stack Engineer</div>
+					<div class="card-period">
+						May 2019 – Present &nbsp;·&nbsp; Mississauga, ON
+					</div>
+					<p class="card-desc">
+						Startup building messaging tools to help SMBs attract, engage, and
+						retain customers.
+					</p>
+					<button
+						class="card-toggle"
+						aria-expanded="false"
+						aria-controls="dh-details"
+						dfsd
+					>
+						<span class="arrow">▶</span> show more
+					</button>
+					<div class="card-details" id="dh-details">
+						<ul class="term-list" style="margin-top: 14px">
+							<li>
+								Plan, design, and implement web-applications using HTML, CSS,
+								React JS
+							</li>
+							<li>
+								Design and implement core components of back-end REST APIs
+							</li>
+							<li>Build SQL queries and automate manual processes</li>
+							<li>
+								Work cross-functionally with sales, support, and marketing
+							</li>
+							<li>
+								Drive continuous improvement in tools, processes, and best
+								practices
+							</li>
+							<li>Script automation for reporting and application support</li>
+							<li>Participate in rigorous code reviews</li>
+						</ul>
+						<div class="tags">
+							<span class="tag">JavaScript</span>
+							<span class="tag">React</span>
+							<span class="tag">Node.js</span>
+							<span class="tag">MySQL</span>
+							<span class="tag">HTML/CSS</span>
+							<span class="tag">jQuery</span>
+							<span class="tag">Bootstrap</span>
+							<span class="tag">Jira</span>
+						</div>
+					</div>
+				</div>
+
+				<!-- CS Software -->
+				<div class="card reveal">
+					<div class="card-accent"></div>
+					<div class="card-header-row">
+						<a
+							class="card-company"
+							href="https://cs-software-org.github.io/"
+							target="_blank"
+							rel="noopener"
+							>CS Software</a
+						>
+						<span class="card-badge badge-active">CURRENT</span>
+					</div>
+					<div class="card-role">Founder & Developer</div>
+					<div class="card-period">
+						June 2016 – Present &nbsp;·&nbsp; Hamilton, ON
+					</div>
+					<p class="card-desc">
+						Web design, software consulting, and mobile app development company.
+					</p>
+					<button
+						class="card-toggle"
+						aria-expanded="false"
+						aria-controls="css-details"
+					>
+						<span class="arrow">▶</span> show more
+					</button>
+					<div class="card-details" id="css-details">
+						<ul class="term-list" style="margin-top: 14px">
+							<li>
+								Founded a web design and software development business; raised
+								$3 000 from Ontario's flagship entrepreneurship program
+							</li>
+							<li>
+								Developed
+								<a
+									href="https://play.google.com/store/apps/details?id=com.gmail.cssoftware3279.Touch_Roulette"
+									target="_blank"
+									rel="noopener"
+									style="color: var(--cyan)"
+									>Touch Roulette – Decision Maker</a
+								>
+								— a cross-platform app with over
+								<strong style="color: var(--white)">1 million downloads</strong>
+							</li>
+							<li>
+								Created and consulted on several websites for small businesses
+							</li>
+						</ul>
+						<div class="tags">
+							<span class="tag">Corona SDK</span>
+							<span class="tag">Lua</span>
+							<span class="tag">HTML/CSS</span>
+							<span class="tag">JavaScript</span>
+						</div>
+					</div>
+				</div>
+
+				<!-- Bell Canada -->
+				<div class="card reveal">
+					<div class="card-accent" style="background: var(--cyan)"></div>
+					<div class="card-header-row">
+						<a
+							class="card-company"
+							href="https://www.bell.ca/"
+							target="_blank"
+							rel="noopener"
+							>Bell Canada</a
+						>
+						<span class="card-badge badge-past">CO-OP</span>
+					</div>
+					<div class="card-role">Software Developer (Co-op)</div>
+					<div class="card-period">
+						May 2017 – August 2018 &nbsp;·&nbsp; Mississauga, ON
+					</div>
+					<p class="card-desc">
+						5-person DevOps team building in-house automation & analytics tools
+						for the Core Network Team.
+					</p>
+					<button
+						class="card-toggle"
+						aria-expanded="false"
+						aria-controls="bell-details"
+					>
+						<span class="arrow">▶</span> show more
+					</button>
+					<div class="card-details" id="bell-details">
+						<ul class="term-list" style="margin-top: 14px">
+							<li>
+								Designed, developed, and maintained in-house tools in an agile
+								environment
+							</li>
+							<li>Built SQL queries and automated manual processes</li>
+							<li>Designed and modified SQL databases used by team tools</li>
+							<li>
+								Served as Scrum Master for 6 months — ran bi-weekly workshops
+								and supervised the scrum process
+							</li>
+							<li>
+								Delivered sprint-based Calendar and Log Viewer web apps as
+								self-directed projects
+							</li>
+						</ul>
+						<div class="tags">
+							<span class="tag">.NET Core</span>
+							<span class="tag">C#</span>
+							<span class="tag">SQL Server</span>
+							<span class="tag">Entity Framework</span>
+							<span class="tag">JavaScript</span>
+							<span class="tag">jQuery</span>
+							<span class="tag">Bootstrap</span>
+							<span class="tag">TFS / Git</span>
+						</div>
+					</div>
+				</div>
+
+				<!-- Additional work toggle -->
+				<div style="margin-top: 8px">
+					<button
+						class="card-toggle"
+						aria-expanded="false"
+						aria-controls="additional-work"
+						style="font-size: 13px; padding: 10px 0"
+					>
+						<span class="arrow">▶</span> additional work history
+					</button>
+					<div class="card-details" id="additional-work">
+						<div class="card" style="margin-top: 16px">
+							<div class="card-accent" style="background: var(--muted)"></div>
+							<div class="card-company" style="color: var(--muted)">
+								Terra Greenhouses
+							</div>
+							<div class="card-role">Shipping & Receiving</div>
+							<div class="card-period">Summers 2015 & 2016 · Hamilton, ON</div>
+							<ul class="term-list">
 								<li>
-									Demonstrated organizational skills by organizing warehouse
+									Organized warehouse; operated forklift; assembled patio sets
+									and outdoor décor
 								</li>
 								<li>
-									Demonstrated communication skills by engaging with customers
-								</li>
-								<li>
-									Operated forklift and demonstrated comprehension skills by
-									assembling a wide variety of patio sets, furniture, and other
-									outdoor décor
-								</li>
-								<li>
-									Responsible for helping and providing solutions for customers
-								</li>
-								<li>
-									Received Mystery Shopper Award for outstanding customer
-									service both years
+									Received
+									<strong style="color: var(--white)"
+										>Mystery Shopper Award</strong
+									>
+									for outstanding customer service both years
 								</li>
 							</ul>
-							<hr class="white-line" />
 						</div>
-						<div>
-							<h3 class="text-white">Homes by John Bruce Robinson</h3>
-							<h5 class="text-white">
-								General Laborer | Binbrook, ON | July 2012-October 2015
-							</h5>
-							<ul class="text-white biggerText">
+						<div class="card">
+							<div class="card-accent" style="background: var(--muted)"></div>
+							<div class="card-company" style="color: var(--muted)">
+								Homes by John Bruce Robinson
+							</div>
+							<div class="card-role">General Laborer</div>
+							<div class="card-period">
+								July 2012 – October 2015 · Binbrook, ON
+							</div>
+							<ul class="term-list">
 								<li>
-									Demonstrated strong work ethic and thrived under low
+									Preparation, cleanliness, construction, and maintenance of
+									residential homes
+								</li>
+								<li>
+									Strong teamwork, communication, and time management under low
 									supervision
 								</li>
-								<li>
-									Responsible for the preparation, cleanliness, construction,
-									and maintenance of all residential homes
-								</li>
-								<li>
-									Tasks required teamwork, communication, and time management in
-									order to complete work on time
-								</li>
 							</ul>
 						</div>
 					</div>
 				</div>
-			</div>
-		</section>
+			</section>
 
-		<!-- Education Grid Section -->
-		<section class="portfolio" id="education">
-			<div class="container">
-				<h2 class="text-center text-uppercase text-secondary mb-0">
-					Education
-				</h2>
-				<hr class="star-dark mb-5" />
-				<div class="row">
-					<div>
-						<h3>B.A.Sc in Computer Science</h3>
-						<h5>
-							McMaster University | Hamilton, ON | September 2014- April 2019
-						</h5>
-						<ul class="biggerText">
-							<li>
-								Completed Bachelor of Applied Science Honours Computer Science
-								with Co-op program.
-							</li>
-							<li>Graduated with a 3.70/4.0 GPA, (an A-)</li>
-							<li>
-								Most relavent course work: Data Structures and Algorithms,
-								Software Requirements & Design, Databases, Computer Graphics
-							</li>
-						</ul>
-						<p class="biggerText">
-							<a
-								href="https://future.mcmaster.ca/programs/computer-science/"
-								target="_blank"
-								>More about the computer science program at McMaster
-								Univerity</a
-							>
-						</p>
-						<h5>Extracuricular Activities</h5>
-						<ul class="biggerText">
-							<li>
-								Computer Science Society Executive - Vice President of
-								Technologies (Fall 2016 – Winter 2017)
-							</li>
-							<li>Hackathons: Delta Hacks 1 & 2, YHacks, ConU 2 Hacks</li>
-							<li>
-								Degroot’s Den 2019 Pitch Competition 2nd place Award Winner
-							</li>
-							<li>
-								McMaster Univeristy Intramurals Outdoor Soccer (Fall 2014)
-							</li>
-						</ul>
-						<h5>Miscellaneous Skills</h5>
-						<p class="biggerText">
-							Cisco Certified Technician Level C, Graphic Design (Posters,
-							Logos, & more), Conversational Spanish(Verbal & Written),
-							Conversational German(Basic - Verbal), Basic Photo Editing Skills,
-							WHMIS Training
-						</p>
+			<!-- ── Education ── -->
+			<section class="section reveal" id="education">
+				<div class="section-header">
+					<div class="section-prompt">
+						<span class="ps1-sym">$</span>
+						<span class="section-title">cat education.txt</span>
+					</div>
+					<div class="section-divider"></div>
+				</div>
+				<div class="edu-card reveal">
+					<div class="card-accent" style="background: var(--cyan)"></div>
+					<div class="edu-degree">
+						B.A.Sc Honours Computer Science
+						<span style="color: var(--muted); font-weight: 400; font-size: 13px"
+							>with Co-op</span
+						>
+					</div>
+					<div class="edu-school">McMaster University — Hamilton, ON</div>
+					<div class="edu-period">
+						September 2014 – April 2019 &nbsp;·&nbsp; GPA 3.70 / 4.0 (A−)
+					</div>
+					<ul class="term-list">
+						<li>
+							Relevant coursework: Data Structures & Algorithms, Software
+							Requirements & Design, Databases, Computer Graphics
+						</li>
+						<li>
+							CS Society Executive — VP of Technologies (Fall 2016 – Winter
+							2017)
+						</li>
+						<li>Hackathons: Delta Hacks 1 & 2, YHacks, ConU 2 Hacks</li>
+						<li>
+							<strong style="color: var(--white)">DeGroote's Den 2019</strong>
+							Pitch Competition — 2nd Place Award Winner
+						</li>
+						<li>McMaster Intramurals Outdoor Soccer (Fall 2014)</li>
+					</ul>
+					<div style="margin-top: 14px">
+						<a
+							class="btn-term btn-term-outline"
+							href="https://future.mcmaster.ca/programs/computer-science/"
+							target="_blank"
+							rel="noopener"
+							style="font-size: 12px; padding: 6px 14px"
+						>
+							McMaster CS Program ↗
+						</a>
 					</div>
 				</div>
-			</div>
-		</section>
+			</section>
 
-		<!-- Contact Section -->
-		<section class="bg-primary" id="contact">
-			<div class="container">
-				<h2 class="text-center text-uppercase text-white">Contact</h2>
-				<hr class="star-light mb-5" />
-				<div class="row">
-					<div class="col-lg-12 mr-auto">
-						<p class="text-center lead text-white">
-							Have a question or want to work together? Feel free to send me an
-							email or dm on linkedin. <br /><br />
-							Here are my
-							<a
-								style="font-weight: 600"
-								class="text-white"
-								href="https://github.com/carlossantana3279"
-								>Github</a
-							>
-							or
-							<a
-								style="font-weight: 600"
-								class="text-white"
-								href="https://www.linkedin.com/in/carlos3279/"
-								>LinkedIn</a
-							>
-							to learn more about me.
-						</p>
+			<!-- ── Skills ── -->
+			<section class="section reveal" id="skills">
+				<div class="section-header">
+					<div class="section-prompt">
+						<span class="ps1-sym">$</span>
+						<span class="section-title">cat skills.json | jq .</span>
+					</div>
+					<div class="section-divider"></div>
+				</div>
+				<div class="skills-grid">
+					<div class="skill-group reveal">
+						<div class="skill-group-label">Frontend</div>
+						<div class="skill-item">React</div>
+						<div class="skill-item">JavaScript (ES6+)</div>
+						<div class="skill-item">HTML / CSS</div>
+						<div class="skill-item">jQuery</div>
+						<div class="skill-item">Bootstrap</div>
+					</div>
+					<div class="skill-group reveal">
+						<div class="skill-group-label">Backend</div>
+						<div class="skill-item">Node.js</div>
+						<div class="skill-item">C# / .NET Core</div>
+						<div class="skill-item">REST APIs</div>
+						<div class="skill-item">Entity Framework</div>
+					</div>
+					<div class="skill-group reveal">
+						<div class="skill-group-label">Data</div>
+						<div class="skill-item">MySQL</div>
+						<div class="skill-item">SQL Server</div>
+						<div class="skill-item">SQL (queries & design)</div>
+						<div class="skill-item">Data Visualization</div>
+					</div>
+					<div class="skill-group reveal">
+						<div class="skill-group-label">Tools & Practices</div>
+						<div class="skill-item">Git / GitHub / TFS</div>
+						<div class="skill-item">Agile / Scrum</div>
+						<div class="skill-item">VS Code / VS</div>
+						<div class="skill-item">Jira / Postman</div>
+					</div>
+					<div class="skill-group reveal">
+						<div class="skill-group-label">Mobile</div>
+						<div class="skill-item">Corona SDK</div>
+						<div class="skill-item">Lua</div>
+						<div class="skill-item">Cross-platform dev</div>
+					</div>
+					<div class="skill-group reveal">
+						<div class="skill-group-label">Miscellaneous</div>
+						<div class="skill-item">Graphic Design</div>
+						<div class="skill-item">Spanish (conversational)</div>
+						<div class="skill-item">German (basic)</div>
+						<div class="skill-item">Photo Editing</div>
 					</div>
 				</div>
-			</div>
-		</section>
-		<div class="copyright py-4 text-white">
-			<div class="container text-center">
-				<ul class="list-inline">
-					<li class="list-inline-item">carlossantana3279@gmail.com</li>
-				</ul>
-			</div>
+			</section>
+
+			<!-- ── Contact ── -->
+			<section class="section reveal" id="contact">
+				<div class="section-header">
+					<div class="section-prompt">
+						<span class="ps1-sym">$</span>
+						<span class="section-title">./contact --list</span>
+					</div>
+					<div class="section-divider"></div>
+					<p class="comment">have a question or want to work together?</p>
+				</div>
+				<div class="contact-grid">
+					<a
+						class="contact-item reveal"
+						href="mailto:carlossantana3279@gmail.com"
+					>
+						<div class="contact-icon">
+							<svg viewBox="0 0 24 24" aria-hidden="true">
+								<path
+									d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
+								/>
+							</svg>
+						</div>
+						<div>
+							<span class="contact-label">email</span>
+							<span class="contact-value">carlossantana3279@gmail.com</span>
+						</div>
+					</a>
+					<a
+						class="contact-item reveal"
+						href="https://www.linkedin.com/in/carlos3279/"
+						target="_blank"
+						rel="noopener"
+					>
+						<div class="contact-icon">
+							<svg viewBox="0 0 24 24" aria-hidden="true">
+								<path
+									d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+								/>
+							</svg>
+						</div>
+						<div>
+							<span class="contact-label">linkedin</span>
+							<span class="contact-value">/in/carlos3279</span>
+						</div>
+					</a>
+					<a
+						class="contact-item reveal"
+						href="https://github.com/carlossantana3279"
+						target="_blank"
+						rel="noopener"
+					>
+						<div class="contact-icon">
+							<svg viewBox="0 0 24 24" aria-hidden="true">
+								<path
+									d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+								/>
+							</svg>
+						</div>
+						<div>
+							<span class="contact-label">github</span>
+							<span class="contact-value">/carlossantana3279</span>
+						</div>
+					</a>
+					<a
+						class="contact-item reveal"
+						href="https://cs-software-org.github.io/"
+						target="_blank"
+						rel="noopener"
+					>
+						<div class="contact-icon">
+							<svg viewBox="0 0 24 24" aria-hidden="true">
+								<path
+									d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm-1 17.93V18a1 1 0 0 0-1-1H8a3 3 0 0 1-3-3v-1l5 5v.93zM17.9 15.39A3 3 0 0 0 15 13h-1v-3a1 1 0 0 0-1-1H9V7h2a1 1 0 0 0 1-1V4.07A8.003 8.003 0 0 1 20 12a7.95 7.95 0 0 1-2.1 3.39z"
+								/>
+							</svg>
+						</div>
+						<div>
+							<span class="contact-label">cs software</span>
+							<span class="contact-value">cs-software-org.github.io</span>
+						</div>
+					</a>
+					<a
+						class="contact-item reveal"
+						href="Resume.pdf"
+						target="_blank"
+						rel="noopener"
+					>
+						<div class="contact-icon">
+							<svg viewBox="0 0 24 24" aria-hidden="true">
+								<path d="M12 16l-6-6h4V4h4v6h4l-6 6zm-7 4h14v-2H5v2z" />
+							</svg>
+						</div>
+						<div>
+							<span class="contact-label">resume</span>
+							<span class="contact-value">Download PDF</span>
+						</div>
+					</a>
+				</div>
+			</section>
 		</div>
-		<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
-		<div class="scroll-to-top d-lg-none position-fixed">
-			<a
-				class="js-scroll-trigger d-block text-center text-white rounded"
-				href="#page-top"
+		<!-- /.page -->
+
+		<!-- ── Footer ── -->
+		<footer class="footer">
+			<span class="green">carlos@portfolio</span>:<span class="green">~</span>$
+			echo "thanks for visiting"<br />
+			<span
+				style="
+					color: var(--muted);
+					font-size: 11px;
+					margin-top: 4px;
+					display: block;
+				"
+				>© 2026 Carlos Santana</span
 			>
-				<i class="fa fa-chevron-up"></i>
-			</a>
-		</div>
+		</footer>
 
-		<!-- Bootstrap core JavaScript -->
-		<script src="vendor/jquery/jquery.min.js"></script>
-		<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<script>
+			(function () {
+				"use strict";
 
-		<!-- Plugin JavaScript -->
-		<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-		<script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+				/* ── Boot sequence ── */
+				const body = document.getElementById("terminalBody");
 
-		<!-- Contact Form JavaScript -->
-		<script src="js/jqBootstrapValidation.js"></script>
-		<script src="js/contact_me.js"></script>
+				const bootLines = [
+					{ type: "pip", text: "Initializing carlos-portfolio v2.0.0 ..." },
+					{ type: "pip-ok", text: "✓ loading personality         [done]" },
+					{ type: "pip-ok", text: "✓ loading experience          [done]" },
+					{ type: "pip-ok", text: "✓ loading coffee_dependency   [done]" },
+					{ type: "pip-ok", text: "✓ loading pizza_dependency   [done]" },
+					{
+						type: "pip-warn",
+						text: "⚠ imposter_syndrome          [suppressed]",
+					},
+					{ type: "blank" },
+					{ type: "prompt", cmd: "whoami" },
+					{ type: "name", text: "Carlos Santana" },
+					{ type: "role", text: "Full Stack Software Developer" },
+					{
+						type: "tagline",
+						text: '"I build software because I genuinely love seeing it make someone\'s day easier."',
+					},
+					{ type: "blank" },
+					{ type: "prompt", cmd: "cat contact_info.json" },
+					// Meetraya chatbot open command
+					{ type: "prompt", cmd: "open ./chat" },
+					{ type: "kv", key: "location", val: "London, ON, Canada" },
+					{
+						type: "kv",
+						key: "email",
+						val: '<a href="mailto:carlossantana3279@gmail.com">carlossantana3279@gmail.com</a>',
+					},
+					{
+						type: "kv",
+						key: "github",
+						val: '<a href="https://github.com/carlossantana3279" target="_blank" rel="noopener">github.com/carlossantana3279</a>',
+					},
+					{
+						type: "kv",
+						key: "linkedin",
+						val: '<a href="https://www.linkedin.com/in/carlos3279/" target="_blank" rel="noopener">linkedin.com/in/carlos3279</a>',
+					},
+					{
+						type: "kv",
+						key: "app_downloads",
+						val: '<span style="color:var(--green)">1,000,000+</span> (Touch Roulette)',
+					},
+					{ type: "blank" },
+					{ type: "actions" },
+					{ type: "blank" },
+					{ type: "hint" },
+				];
 
-		<!-- Custom scripts for this template -->
-		<script src="js/freelancer.min.js"></script>
+				function makeLine(data, i) {
+					const el = document.createElement("div");
+					el.className = "t-line";
+					el.style.transitionDelay = i * 55 + "ms";
 
+					switch (data.type) {
+						case "pip":
+							el.innerHTML =
+								'<span class="pip-line">' + esc(data.text) + "</span>";
+							break;
+						case "pip-ok":
+							el.innerHTML =
+								'<span class="pip-line pip-ok">' + data.text + "</span>";
+							break;
+						case "pip-warn":
+							el.innerHTML =
+								'<span class="pip-line pip-warn">' + data.text + "</span>";
+							break;
+						case "blank":
+							el.innerHTML = "&nbsp;";
+							break;
+						case "prompt":
+							el.innerHTML =
+								'<span class="t-prompt">' +
+								'<span class="ps1-user">carlos</span>' +
+								'<span class="ps1-at">@</span>' +
+								'<span class="ps1-host">portfolio</span>' +
+								'<span class="ps1-path">:~</span>' +
+								'<span class="ps1-sym">$ </span>' +
+								'<span class="ps1-cmd">' +
+								esc(data.cmd) +
+								"</span>" +
+								"</span>";
+							break;
+						case "name":
+							el.innerHTML =
+								'<span class="t-line-inner t-name">' +
+								esc(data.text) +
+								"</span>";
+							break;
+						case "role":
+							el.innerHTML =
+								'<span class="t-role">' + esc(data.text) + "</span>";
+							break;
+						case "tagline":
+							el.innerHTML =
+								'<span class="t-tagline">' + esc(data.text) + "</span>";
+							break;
+						case "kv":
+							el.innerHTML =
+								'<span class="kv">' +
+								'<span class="kv-key">' +
+								esc(data.key) +
+								"</span>" +
+								'<span class="kv-sep">=></span>' +
+								'<span class="kv-val">' +
+								data.val +
+								"</span>" +
+								"</span>";
+							break;
+						case "actions":
+							el.innerHTML =
+								'<div class="hero-actions">' +
+								'<a class="btn-term btn-term-primary" href="Resume.pdf" target="_blank" rel="noopener">' +
+								'<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 16l-6-6h4V4h4v6h4l-6 6zm-7 4h14v-2H5v2z"/></svg>' +
+								"Download Resume" +
+								"</a>" +
+								'<a class="btn-term btn-term-outline" href="#about">Explore Profile</a>' +
+								"</div>";
+							break;
+						case "cursor":
+							el.innerHTML = '<span class="cursor" aria-hidden="true"></span>';
+							break;
+						case "hint":
+							el.innerHTML =
+								'<span style="color:var(--muted);font-size:11px;font-style:italic;">' +
+								'// type <span style="color:var(--yellow,#e3b341)">help</span> for available commands' +
+								"</span>";
+							break;
+					}
+					return el;
+				}
+
+				function esc(s) {
+					return s
+						.replace(/&/g, "&amp;")
+						.replace(/</g, "&lt;")
+						.replace(/>/g, "&gt;");
+				}
+
+				// Render lines with staggered reveal
+				bootLines.forEach(function (data, i) {
+					const el = makeLine(data, i);
+					body.appendChild(el);
+					requestAnimationFrame(function () {
+						setTimeout(function () {
+							el.classList.add("visible");
+						}, i * 55);
+					});
+				});
+
+				/* ── Collapsible card details ── */
+				document.querySelectorAll(".card-toggle").forEach(function (btn) {
+					btn.addEventListener("click", function () {
+						const targetId = btn.getAttribute("aria-controls");
+						const details = document.getElementById(targetId);
+						const isOpen = details.classList.toggle("open");
+						btn.classList.toggle("open", isOpen);
+						btn.setAttribute("aria-expanded", isOpen);
+						btn.querySelector(".arrow").style.transform = isOpen
+							? "rotate(90deg)"
+							: "";
+						const label = btn.childNodes[1];
+						if (label && label.nodeType === 3) {
+							label.textContent = isOpen ? " show less" : " show more";
+						}
+					});
+				});
+
+				/* ── Scroll reveal ── */
+				const revealObserver = new IntersectionObserver(
+					function (entries) {
+						entries.forEach(function (entry) {
+							if (entry.isIntersecting) {
+								entry.target.classList.add("visible");
+								revealObserver.unobserve(entry.target);
+							}
+						});
+					},
+					{ threshold: 0.1 },
+				);
+
+				document.querySelectorAll(".reveal").forEach(function (el) {
+					revealObserver.observe(el);
+				});
+
+				/* ── Smooth scroll for nav links ── */
+				document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+					a.addEventListener("click", function (e) {
+						const target = document.querySelector(a.getAttribute("href"));
+						if (target) {
+							e.preventDefault();
+							target.scrollIntoView({ behavior: "smooth", block: "start" });
+						}
+					});
+				});
+
+				/* ── Shared toast helper ── */
+				function showToast(html, durationMs) {
+					durationMs = durationMs || 3500;
+					const toast = document.createElement("div");
+					toast.style.cssText =
+						"position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(12px);background:#161616;border:1px solid #39d353;border-radius:8px;padding:14px 26px;font-family:var(--font,monospace);font-size:13px;color:#39d353;z-index:10000;box-shadow:0 0 40px rgba(57,211,83,0.25);text-align:center;opacity:0;transition:opacity 0.3s, transform 0.3s;white-space:nowrap;";
+					toast.innerHTML = html;
+					document.body.appendChild(toast);
+					requestAnimationFrame(function () {
+						toast.style.opacity = "1";
+						toast.style.transform = "translateX(-50%) translateY(0)";
+					});
+					setTimeout(function () {
+						toast.style.opacity = "0";
+						toast.style.transform = "translateX(-50%) translateY(12px)";
+						setTimeout(function () {
+							toast.remove();
+						}, 350);
+					}, durationMs);
+				}
+
+				/* ── 1. Konami code ── */
+				const konami = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+				let konamiIdx = 0;
+				document.addEventListener("keydown", function (e) {
+					if (e.keyCode === konami[konamiIdx]) {
+						konamiIdx++;
+						if (konamiIdx === konami.length) {
+							konamiIdx = 0;
+							showToast(
+								'<span style="color:#8b949e;font-size:11px;">// easter egg unlocked</span><br>&#127918; &nbsp;<strong>+30xp</strong> &nbsp;&mdash;&nbsp; you clearly know what you\'re doing.',
+							);
+						}
+					} else {
+						konamiIdx = 0;
+					}
+				});
+
+				/* ── 2 & 3. Live typing input line in the terminal ── */
+				(function () {
+					// Insert an interactive input row after the boot sequence renders
+					const termBody = document.getElementById("terminalBody");
+
+					// Build the input row
+					const inputRow = document.createElement("div");
+					inputRow.className = "t-line visible";
+					inputRow.style.marginTop = "6px";
+					inputRow.innerHTML =
+						'<span class="t-prompt">' +
+						'<span class="ps1-user">carlos</span>' +
+						'<span class="ps1-at">@</span>' +
+						'<span class="ps1-host">portfolio</span>' +
+						'<span class="ps1-path">:~</span>' +
+						'<span class="ps1-sym">$ </span>' +
+						'<span id="term-typed" style="color:var(--white);"></span>' +
+						'<span class="cursor" aria-hidden="true"></span>' +
+						"</span>";
+
+					// Append after all boot lines are visible
+					const bootDelay = 25 * 55 + 400; // ~last line delay + buffer
+					setTimeout(function () {
+						// Remove the old standalone cursor line, insert the input row
+						const oldCursor = termBody.querySelector(".cursor");
+						if (oldCursor && oldCursor.parentElement === termBody)
+							oldCursor.parentElement.remove();
+						termBody.appendChild(inputRow);
+					}, bootDelay);
+
+					let typedBuffer = "";
+
+					function getTypedSpan() {
+						return document.getElementById("term-typed");
+					}
+
+					function resetInput() {
+						typedBuffer = "";
+						const s = getTypedSpan();
+						if (s) s.textContent = "";
+						const st = document.getElementById("sticky-typed");
+						if (st) st.textContent = "";
+					}
+
+					document.addEventListener("keydown", function (e) {
+						// Ignore modifier-only keys and special keys
+						if (!e.key || e.metaKey || e.ctrlKey || e.altKey) return;
+
+						// Prevent Space from triggering browser scroll when typing in terminal,
+						// but allow it to activate focused links/buttons (e.g. nav menu)
+						if (e.key === " ") {
+							const tag =
+								document.activeElement && document.activeElement.tagName;
+							if (tag !== "A" && tag !== "BUTTON") e.preventDefault();
+							else return;
+						}
+
+						// Prevent Enter from activating focused links/buttons while terminal is in use
+						if (e.key === "Enter" && typedBuffer.length > 0) e.preventDefault();
+
+						if (e.key === "Backspace") {
+							typedBuffer = typedBuffer.slice(0, -1);
+						} else if (e.key === "Enter") {
+							const cmd = typedBuffer.trim().toLowerCase();
+							const cdMatch = cmd.match(/^cd\s+(\S+)$/);
+
+							if (cmd === "help") {
+								showToast(
+									'<span style="color:#8b949e;font-size:11px;">// available commands</span><br>' +
+										'<span style="color:var(--yellow,#e3b341)">ls</span> &nbsp;·&nbsp; ' +
+										'<span style="color:var(--yellow,#e3b341)">cd &lt;section&gt;</span> &nbsp;·&nbsp; ' +
+										'<span style="color:var(--yellow,#e3b341)">cat resume</span> &nbsp;·&nbsp; ' +
+										'<span style="color:var(--yellow,#e3b341)">date</span> &nbsp;·&nbsp; ' +
+										'<span style="color:var(--yellow,#e3b341)">hire me</span> &nbsp;·&nbsp; ' +
+										'<span style="color:var(--yellow,#e3b341)">sudo</span> &nbsp;·&nbsp; ' +
+										'<span style="color:var(--yellow,#e3b341)">rm -rf /</span> &nbsp;·&nbsp; ' +
+										'<span style="color:var(--yellow,#e3b341)">help</span>' +
+										'<br><span style="color:#8b949e;font-size:11px;">// keyboard shortcuts</span><br>' +
+										'<span style="color:var(--cyan,#56d4dd)">[Tab]</span> next section &nbsp;·&nbsp; ' +
+										'<span style="color:var(--cyan,#56d4dd)">[Shift+Tab]</span> prev section',
+									8000,
+								);
+							} else if (cmd === "ls") {
+								showToast(
+									'<span style="color:#8b949e;font-size:11px;">$ ls -la ~/portfolio/</span><br>' +
+										'<span style="color:var(--cyan,#56d4dd)">drwxr-xr-x</span> &nbsp;about/<br>' +
+										'<span style="color:var(--cyan,#56d4dd)">drwxr-xr-x</span> &nbsp;experience/<br>' +
+										'<span style="color:var(--cyan,#56d4dd)">drwxr-xr-x</span> &nbsp;education/<br>' +
+										'<span style="color:var(--cyan,#56d4dd)">drwxr-xr-x</span> &nbsp;skills/<br>' +
+										'<span style="color:var(--cyan,#56d4dd)">drwxr-xr-x</span> &nbsp;contact/<br>' +
+										'<span style="color:var(--green,#39d353)">-rw-r--r--</span> &nbsp;resume.pdf &nbsp;<span style="color:#8b949e">142K</span>',
+									6000,
+								);
+							} else if (cdMatch) {
+								const sections = [
+									"about",
+									"experience",
+									"education",
+									"skills",
+									"contact",
+									"top",
+									"~",
+									"/",
+								];
+								const dest = cdMatch[1].replace(/^\/|\/$/g, "").toLowerCase();
+								const anchor =
+									dest === "~" || dest === "/" || dest === ".." ? "top" : dest;
+								const target = document.getElementById(anchor);
+								if (target) {
+									target.scrollIntoView({ behavior: "smooth", block: "start" });
+									showToast(
+										'<span style="color:#8b949e;font-size:11px;">$ cd ' +
+											esc(cdMatch[1]) +
+											"</span><br>" +
+											'<span style="color:var(--green,#39d353)">✓</span> &nbsp;navigated to <strong>' +
+											esc(anchor) +
+											"/</strong>",
+										3000,
+									);
+								} else {
+									showToast(
+										'<span style="color:#f85149;font-size:11px;">// no such directory</span><br>' +
+											"bash: cd: <strong>" +
+											esc(cdMatch[1]) +
+											"</strong>: No such file or directory",
+										3500,
+									);
+								}
+							} else if (cmd === "cat resume") {
+								showToast(
+									'<span style="color:#8b949e;font-size:11px;">$ cat resume.pdf</span><br>' +
+										'<span style="color:var(--green,#39d353)">✓</span> &nbsp;opening <strong>resume.pdf</strong> ...',
+									2500,
+								);
+								setTimeout(function () {
+									window.open("Resume.pdf", "_blank");
+								}, 600);
+							} else if (cmd === "date") {
+								const now = new Date();
+								const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+								const months = [
+									"Jan",
+									"Feb",
+									"Mar",
+									"Apr",
+									"May",
+									"Jun",
+									"Jul",
+									"Aug",
+									"Sep",
+									"Oct",
+									"Nov",
+									"Dec",
+								];
+								const ds =
+									days[now.getDay()] +
+									" " +
+									months[now.getMonth()] +
+									" " +
+									String(now.getDate()).padStart(2, "0") +
+									" " +
+									String(now.getHours()).padStart(2, "0") +
+									":" +
+									String(now.getMinutes()).padStart(2, "0") +
+									":" +
+									String(now.getSeconds()).padStart(2, "0") +
+									" " +
+									now.getFullYear();
+								showToast(
+									'<span style="color:#8b949e;font-size:11px;">$ date</span><br>' +
+										'<span style="color:var(--white,#e6edf3)">' +
+										ds +
+										"</span>",
+									3500,
+								);
+							} else if (cmd === "hire me") {
+								showToast(
+									'<span style="color:#8b949e;font-size:11px;">// application received</span><br>&#10003; &nbsp;<strong>processing hire_me.exe</strong> &nbsp;&mdash;&nbsp; we\'ll be in touch.',
+									4000,
+								);
+							} else if (cmd === "sudo") {
+								showToast(
+									'<span style="color:#f85149;font-size:11px;">// permission denied</span><br>&#128274; &nbsp;<strong>sudo:</strong> you are not in the sudoers file. This incident will be reported.',
+									4500,
+								);
+							} else if (cmd === "rm -rf /" || cmd === "rm -rf /*") {
+								showToast(
+									'<span style="color:#f85149;font-size:11px;">// initiating...</span><br>' +
+										"&#128165; &nbsp;<strong>rm: /</strong>: deleting everything...<br>" +
+										'<span style="color:#8b949e;font-size:11px;">just kidding. filesystem intact. nice try.</span>',
+									5000,
+								);
+							}
+							resetInput();
+							return;
+						} else if (e.key === "Escape") {
+							resetInput();
+							return;
+						} else if (e.key.length === 1) {
+							if (typedBuffer.length < 64) typedBuffer += e.key;
+						}
+
+						const s = getTypedSpan();
+						if (s) s.textContent = typedBuffer;
+						const st = document.getElementById("sticky-typed");
+						if (st) st.textContent = typedBuffer;
+					});
+
+					/* ── Sticky terminal: show when hero scrolls out of view ── */
+					(function () {
+						const heroWindow = document.querySelector(".hero .terminal-window");
+						const stickyTerm = document.getElementById("stickyTerm");
+						if (!heroWindow || !stickyTerm) return;
+
+						function update() {
+							var show = heroWindow.getBoundingClientRect().bottom <= 44;
+							stickyTerm.classList.toggle("visible", show);
+							stickyTerm.setAttribute("aria-hidden", show ? "false" : "true");
+						}
+
+						window.addEventListener("scroll", update, { passive: true });
+						update();
+					})();
+				})();
+
+				/* ── 4. Click name 5 times ── */
+				let nameClicks = 0;
+				let nameClickTimer = null;
+				document.addEventListener("click", function (e) {
+					const el = e.target;
+					if (el && el.classList && el.classList.contains("t-name")) {
+						nameClicks++;
+						clearTimeout(nameClickTimer);
+						nameClickTimer = setTimeout(function () {
+							nameClicks = 0;
+						}, 1500);
+						if (nameClicks >= 5) {
+							nameClicks = 0;
+							showToast(
+								'<span style="color:#8b949e;font-size:11px;">// identity check</span><br>&#127928; &nbsp;<strong>Did you mean:</strong> <a href="https://santana.com/" target="_blank" rel="noopener" style="color:#56d4dd;">Carlos Santana</a> (the guitarist)?',
+								5000,
+							);
+						}
+					}
+				});
+
+				/* ── 5. Click the red dot on the main terminal window ── */
+				(function () {
+					const heroTerminal = document.querySelector(".hero .terminal-header");
+					if (!heroTerminal) return;
+					const redDot = heroTerminal.querySelector(".dot-red");
+					if (!redDot) return;
+					redDot.style.cursor = "pointer";
+					redDot.addEventListener("click", function (e) {
+						e.stopPropagation();
+						// Build modal
+						const overlay = document.createElement("div");
+						overlay.style.cssText =
+							"position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:10001;display:flex;align-items:center;justify-content:center;";
+						const dialog = document.createElement("div");
+						dialog.style.cssText =
+							"background:#161616;border:1px solid #2a2a2a;border-radius:10px;padding:28px 32px;font-family:var(--font,monospace);font-size:13px;color:#e6edf3;text-align:center;max-width:340px;box-shadow:0 24px 80px rgba(0,0,0,0.8);";
+						dialog.innerHTML =
+							'<div style="color:#8b949e;font-size:11px;margin-bottom:10px;">// system prompt</div>' +
+							'<div style="font-size:15px;margin-bottom:6px;"><strong>Quit Terminal?</strong></div>' +
+							'<div style="color:#8b949e;font-size:12px;margin-bottom:22px;">Are you sure? All unsaved impressions will be lost.</div>' +
+							'<div style="display:flex;gap:12px;justify-content:center;">' +
+							'<button id="egg-cancel" style="background:transparent;border:1px solid #2a2a2a;color:#e6edf3;font-family:inherit;font-size:12px;padding:7px 20px;border-radius:6px;cursor:pointer;">Cancel</button>' +
+							'<button id="egg-quit" style="background:#f85149;border:1px solid #f85149;color:#fff;font-family:inherit;font-size:12px;padding:7px 20px;border-radius:6px;cursor:pointer;">Quit</button>' +
+							"</div>";
+						overlay.appendChild(dialog);
+						document.body.appendChild(overlay);
+						overlay.addEventListener("click", function (ev) {
+							if (ev.target === overlay) overlay.remove();
+						});
+						dialog
+							.querySelector("#egg-cancel")
+							.addEventListener("click", function () {
+								overlay.remove();
+							});
+						dialog
+							.querySelector("#egg-quit")
+							.addEventListener("click", function () {
+								overlay.remove();
+								showToast(
+									'<span style="color:#8b949e;font-size:11px;">// process terminated</span><br>&#128075; &nbsp;<strong>Goodbye.</strong> &nbsp;&mdash;&nbsp; just kidding, you can\'t quit this easily.',
+									4000,
+								);
+							});
+					});
+				})();
+
+				/* ── 6. Screensaver: 30s idle → matrix rain ── */
+				(function () {
+					let idleTimer = null;
+					let screensaverActive = false;
+					let animFrame = null;
+
+					function resetIdle() {
+						if (screensaverActive) return;
+						clearTimeout(idleTimer);
+						idleTimer = setTimeout(startScreensaver, 30000);
+					}
+
+					["mousemove", "keydown", "scroll", "click", "touchstart"].forEach(
+						function (ev) {
+							document.addEventListener(
+								ev,
+								function () {
+									if (screensaverActive) stopScreensaver();
+									else resetIdle();
+								},
+								{ passive: true },
+							);
+						},
+					);
+
+					resetIdle();
+
+					function startScreensaver() {
+						screensaverActive = true;
+						const overlay = document.createElement("div");
+						overlay.id = "egg-screensaver";
+						overlay.style.cssText =
+							"position:fixed;inset:0;background:#000;z-index:10002;cursor:none;";
+						const canvas = document.createElement("canvas");
+						canvas.style.cssText = "display:block;width:100%;height:100%;";
+						overlay.appendChild(canvas);
+
+						const label = document.createElement("div");
+						label.style.cssText =
+							"position:absolute;bottom:28px;left:50%;transform:translateX(-50%);font-family:var(--font,monospace);font-size:11px;color:rgba(57,211,83,0.4);letter-spacing:0.1em;";
+						label.textContent = "// press any key to wake";
+						overlay.appendChild(label);
+						document.body.appendChild(overlay);
+
+						const ctx = canvas.getContext("2d");
+						function resize() {
+							canvas.width = overlay.offsetWidth;
+							canvas.height = overlay.offsetHeight;
+						}
+						resize();
+						window.addEventListener("resize", resize);
+
+						const cols = Math.floor(canvas.width / 16);
+						const drops = Array.from({ length: cols }, function () {
+							return Math.random() * -50;
+						});
+						const chars =
+							"アイウエオカキクケコサシスセソタチツテトナニヌネノ0123456789ABCDEF<>/{}[];";
+
+						function draw() {
+							ctx.fillStyle = "rgba(0,0,0,0.05)";
+							ctx.fillRect(0, 0, canvas.width, canvas.height);
+							ctx.fillStyle = "#39d353";
+							ctx.font = "14px monospace";
+							drops.forEach(function (y, i) {
+								const char = chars[Math.floor(Math.random() * chars.length)];
+								ctx.fillText(char, i * 16, y * 16);
+								if (y * 16 > canvas.height && Math.random() > 0.975)
+									drops[i] = 0;
+								drops[i] += 0.5;
+							});
+							animFrame = requestAnimationFrame(draw);
+						}
+						draw();
+
+						overlay._cleanup = function () {
+							window.removeEventListener("resize", resize);
+						};
+					}
+
+					function stopScreensaver() {
+						screensaverActive = false;
+						cancelAnimationFrame(animFrame);
+						const overlay = document.getElementById("egg-screensaver");
+						if (overlay) {
+							overlay._cleanup && overlay._cleanup();
+							overlay.remove();
+						}
+						resetIdle();
+					}
+				})();
+			})();
+		</script>
+		<!-- Meetraya chatbot -->
 		<script type="text/javascript">
 			(function () {
 				window.dh = {
