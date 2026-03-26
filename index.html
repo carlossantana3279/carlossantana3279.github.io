@@ -802,6 +802,10 @@
 			.sticky-term-body {
 				padding: 10px 24px 12px;
 			}
+
+			#demandhub-webchat-widget-root {
+				display: none;
+			}
 		</style>
 	</head>
 
@@ -1865,6 +1869,16 @@
 										'<span style="color:#8b949e;font-size:11px;">just kidding. filesystem intact. nice try.</span>',
 									5000,
 								);
+							}
+							// Handle 'open ./chat' command
+							else if (cmd === "open ./chat") {
+								// get #demandhub-webchat-widget-root and set display style to block
+								var dhRoot = document.getElementById(
+									"demandhub-webchat-widget-root",
+								);
+								if (dhRoot) {
+									dhRoot.style.display = "block";
+								}
 							}
 							resetInput();
 							return;
