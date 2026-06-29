@@ -2079,7 +2079,7 @@
 			})();
 		</script>
 		<!-- Meetraya chatbot -->
-		<script type="text/javascript">
+		<!-- <script type="text/javascript">
 			(function () {
 				window.dh = {
 					chaabi: "3e4065b8-bec6-457c-8f75-f15c03300d01",
@@ -2095,6 +2095,22 @@
 					"chatbotId",
 					"908c7283-d575-4b4a-b7a1-392802f73136",
 				);
+				script.setAttribute("name", "dh_nucleus_script");
+				script.setAttribute("defer", "");
+				document.body.appendChild(script);
+			})();
+		</script> -->
+
+		<!-- DH Stage webchat -->
+		<script type="text/javascript">
+			(function () {
+				window.dh = { chaabi: "f969f930-243e-46a9-959f-d21bbf7b4b4b" };
+				var script = document.createElement("script");
+				script.setAttribute(
+					"src",
+					"https://cdn.demandhub.co/nucleus/stage/dh-nucleus.min.js",
+				);
+				script.setAttribute("chaabi", "f969f930-243e-46a9-959f-d21bbf7b4b4b");
 				script.setAttribute("name", "dh_nucleus_script");
 				script.setAttribute("defer", "");
 				document.body.appendChild(script);
